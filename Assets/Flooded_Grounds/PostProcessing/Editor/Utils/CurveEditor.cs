@@ -376,7 +376,7 @@ namespace UnityEditor.PostProcessing
                 // Draw
                 if (state.showNonEditableHandles)
                 {
-                    if (e.type == EventType.repaint)
+                    if (e.type == EventType.Repaint)
                     {
                         var selectedColor = (isCurrentlySelectedCurve && isCurrentlySelectedKeyframe)
                             ? settings.selectionColor
@@ -422,7 +422,7 @@ namespace UnityEditor.PostProcessing
                     }
 
                     // Keyframe selection & context menu
-                    if (e.type == EventType.mouseDown && rect.Contains(e.mousePosition))
+                    if (e.type == EventType.MouseDown && rect.Contains(e.mousePosition))
                     {
                         if (hitRect.Contains(e.mousePosition))
                         {
@@ -453,7 +453,7 @@ namespace UnityEditor.PostProcessing
                     }
 
                     // Tangent selection & edit mode
-                    if (e.type == EventType.mouseDown && rect.Contains(e.mousePosition))
+                    if (e.type == EventType.MouseDown && rect.Contains(e.mousePosition))
                     {
                         if (inTangentHitRect.Contains(e.mousePosition) && (k > 0 || state.loopInBounds))
                         {
@@ -494,13 +494,12 @@ namespace UnityEditor.PostProcessing
             SaveCurve(curve, animCurve);
         }
 
-        void OnGeneralUI(Rect rect)
-        {
+        void OnGeneralUI(Rect rect) {
             var e = Event.current;
 
             // Selection
-            if (e.type == EventType.mouseDown)
-            {
+            if (e.type != EventType.MouseDown) {
+            } else {
                 GUI.FocusControl(null);
                 m_SelectedCurve = null;
                 m_SelectedKeyframeIndex = -1;
@@ -510,8 +509,7 @@ namespace UnityEditor.PostProcessing
                 float curvePickValue = CurveToCanvas(hit).y;
 
                 // Try and select a curve
-                foreach (var curve in m_Curves)
-                {
+                foreach (var curve in m_Curves) {
                     if (!curve.Value.editable || !curve.Value.visible)
                         continue;
 
@@ -524,22 +522,17 @@ namespace UnityEditor.PostProcessing
 
                     var curvePos = CurveToCanvas(new Vector3(hit.x, hitY));
 
-                    if (Mathf.Abs(curvePos.y - curvePickValue) < settings.curvePickingDistance)
-                    {
+                    if (Mathf.Abs(curvePos.y - curvePickValue) < settings.curvePickingDistance) {
                         m_SelectedCurve = prop;
 
-                        if (e.clickCount == 2 && e.button == 0)
-                        {
+                        if (e.clickCount == 2 && e.button == 0) {
                             // Create a keyframe on double-click on this curve
                             EditCreateKeyframe(animCurve, hit, true, state.zeroKeyConstantValue);
                             SaveCurve(prop, animCurve);
-                        }
-                        else if (e.button == 1)
-                        {
+                        } else if (e.button == 1) {
                             // Curve context menu
                             var menu = new GenericMenu();
-                            menu.AddItem(new GUIContent("Add Key"), false, (x) =>
-                            {
+                            menu.AddItem(new GUIContent("Add Key"), false, (x) => {
                                 var action = (MenuAction)x;
                                 var curveValue = action.curve.animationCurveValue;
                                 action.curve.serializedObject.Update();
@@ -554,11 +547,9 @@ namespace UnityEditor.PostProcessing
                     }
                 }
 
-                if (e.clickCount == 2 && e.button == 0 && m_SelectedCurve == null)
-                {
+                if (e.clickCount == 2 && e.button == 0 && m_SelectedCurve == null) {
                     // Create a keyframe on every curve on double-click
-                    foreach (var curve in m_Curves)
-                    {
+                    foreach (var curve in m_Curves) {
                         if (!curve.Value.editable || !curve.Value.visible)
                             continue;
 
@@ -568,9 +559,7 @@ namespace UnityEditor.PostProcessing
                         EditCreateKeyframe(animCurve, hit, e.alt, state.zeroKeyConstantValue);
                         SaveCurve(prop, animCurve);
                     }
-                }
-                else if (!used && e.button == 1)
-                {
+                } else if (!used && e.button == 1) {
                     // Global context menu
                     var menu = new GenericMenu();
                     menu.AddItem(new GUIContent("Add Key At Position"), false, () => ContextMenuAddKey(hit, false));
@@ -582,15 +571,12 @@ namespace UnityEditor.PostProcessing
             }
 
             // Delete selected key(s)
-            if (e.type == EventType.keyDown && (e.keyCode == KeyCode.Delete || e.keyCode == KeyCode.Backspace))
-            {
-                if (m_SelectedKeyframeIndex != -1 && m_SelectedCurve != null)
-                {
+            if (e.type == EventType.KeyDown && (e.keyCode == KeyCode.Delete || e.keyCode == KeyCode.Backspace)) {
+                if (m_SelectedKeyframeIndex != -1 && m_SelectedCurve != null) {
                     var animCurve = m_SelectedCurve.animationCurveValue;
                     var length = animCurve.length;
 
-                    if (m_Curves[m_SelectedCurve].minPointCount < length && length >= 0)
-                    {
+                    if (m_Curves[m_SelectedCurve].minPointCount < length && length >= 0) {
                         EditDeleteKeyframe(animCurve, m_SelectedKeyframeIndex);
                         m_SelectedKeyframeIndex = -1;
                         SaveCurve(m_SelectedCurve, animCurve);
