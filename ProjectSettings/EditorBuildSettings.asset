@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/main menu and play.unity
+    guid: b45a54fbf88bec84fba5516b3d6427c3
+  - enabled: 1
     path: Assets/Scenes/terrain.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/New Scene.unity
-    guid: 768fa55f2d615e9438ffc1bed5aa65df
+    path: Assets/Scenes/cutscene2 and play.unity
+    guid: db4ae98654240dd43b5ae0b488bf4637
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
