@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Doorcontroller : MonoBehaviour
+public class Doorcontrollerlock : MonoBehaviour
 {
     public float doorOpenAngle = 0f; // มุมที่ประตูจะเปิด
     public float doorCloseAngle = -90f; // มุมที่ประตูจะปิด
@@ -19,12 +19,12 @@ public class Doorcontroller : MonoBehaviour
         }
     }
     void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) // ตรวจสอบว่ากดปุ่ม E หรือไม่
-        {
+
+        if (Input.GetKeyDown(KeyCode.C)) // ตรวจสอบว่ากดปุ่ม E หรือไม่
+       {
             openDoor = !openDoor; // เปลี่ยนสถานะเปิด-ปิดประตู
             promptShown = false; // ตั้งค่าเป็น false เพื่อระบุว่าข้อความไม่ได้ถูกแสดงแล้ว
         }
-
         if (openDoor) // ถ้าประตูเปิดอยู่
         {
             Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0); // มุมที่เป้าหมายในการเปิดประตู
