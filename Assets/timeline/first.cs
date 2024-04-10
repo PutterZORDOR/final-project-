@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class first : MonoBehaviour
 {
-    public void PlayGame() {
-        SceneManager.LoadScene("terrain");
-    }
-    public void QuitGame() {
+    public void QuitGame() 
+    {
+
         Application.Quit();
+    }
+    private void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) 
+         {
+            SceneManager.LoadScene("terrain");
+        }
+      
     }
 }
