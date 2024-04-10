@@ -16,6 +16,6 @@ public class first : MonoBehaviour
          {
             SceneManager.LoadScene("terrain");
         }
-      
+       
     }
 }
