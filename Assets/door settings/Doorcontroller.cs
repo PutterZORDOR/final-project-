@@ -9,20 +9,20 @@ public class Doorcontroller : MonoBehaviour
     public float smooth = 2f; // ความนุ่มนวลของการเปิดปิดประตู
 
     private bool openDoor = false; // สถานะประตูเปิดหรือปิดอยู่
-    private bool promptShown = false; // สถานะข้อความ "Press the key E" แสดงหรือไม่
+   
 
     void OnGUI() {
-        if (!openDoor && !promptShown) // ถ้าประตูปิดและข้อความ "Press the key E" ยังไม่ถูกแสดง
+        if (!openDoor ) // ถ้าประตูปิดและข้อความ "Press the key E" ยังไม่ถูกแสดง
         {
-            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 20, 100, 40), "Press the key E to open the door");
-            promptShown = true; // ตั้งค่าเป็น true เพื่อระบุว่าข้อความถูกแสดงแล้ว
+            //GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 20, 100, 40), "Press the key E to open the door");
+           
         }
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.E)) // ตรวจสอบว่ากดปุ่ม E หรือไม่
         {
             openDoor = !openDoor; // เปลี่ยนสถานะเปิด-ปิดประตู
-            promptShown = false; // ตั้งค่าเป็น false เพื่อระบุว่าข้อความไม่ได้ถูกแสดงแล้ว
+            
         }
 
         if (openDoor) // ถ้าประตูเปิดอยู่

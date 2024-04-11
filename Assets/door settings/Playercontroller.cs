@@ -7,7 +7,7 @@ public class Playercontroller : MonoBehaviour
     public Keycontroller keyController;
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.C)) 
+        if (Input.GetKeyDown(KeyCode.F)) 
             {
             keyController.UseKey();
         }
