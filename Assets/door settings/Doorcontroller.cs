@@ -7,17 +7,34 @@ public class Doorcontroller : MonoBehaviour
     public float doorOpenAngle = 0f; // มุมที่ประตูจะเปิด
     public float doorCloseAngle = -90f; // มุมที่ประตูจะปิด
     public float smooth = 2f; // ความนุ่มนวลของการเปิดปิดประตู
-
+    private bool isReach;
     private bool openDoor = false; // สถานะประตูเปิดหรือปิดอยู่
-   
-
-    void OnGUI() {
-        if (!openDoor ) // ถ้าประตูปิดและข้อความ "Press the key E" ยังไม่ถูกแสดง
-        {
-            //GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 20, 100, 40), "Press the key E to open the door");
-           
+    public GameObject doorText;
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Reach")
+         {
+            isReach = true;
+            doorText.SetActive(true);
+            void OnGUI()
+                {
+                if (!openDoor) 
+                    {
+                }
+            }
         }
     }
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag == "Reach") {
+            isReach = false;
+            
+            
+            doorText.SetActive(false);
+
+        }
+    }
+
     void Update() {
         if (Input.GetKeyDown(KeyCode.E)) // ตรวจสอบว่ากดปุ่ม E หรือไม่
         {
