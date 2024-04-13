@@ -7,11 +7,12 @@ TagManager:
   - Fire
   - Reach
   - Key
+  - InteractiveObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interact
   - Water
   - UI
   - 

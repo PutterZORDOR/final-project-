@@ -16,6 +16,8 @@ public class first : MonoBehaviour
          {
             SceneManager.LoadScene("terrain");
         }
-       
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            SceneManager.LoadScene("terrain");
+        }
     }
 }
