@@ -10,7 +10,7 @@ public class Playercontroller : MonoBehaviour
     [SerializeField] private string excludeLayerName = null;
 
     private Doorcontroller raycasteObj;
-    [SerializeField] private KeyCode openDoorKey = KeyCode.Mouse0;
+    [SerializeField] private KeyCode openDoorKey = KeyCode.E;
     [SerializeField] private Image crosshair = null;
     private bool isCrosshairActive;
     private bool doOnce;

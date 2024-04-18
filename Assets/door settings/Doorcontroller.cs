@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Doorcontroller : MonoBehaviour
@@ -14,8 +15,9 @@ public class Doorcontroller : MonoBehaviour
     public void PlayAnimation() 
      {
         if (!doorOpen) {
-            doorAnim.Play("doorsimple", 0,0.0f);
+            doorAnim.Play("DoorOpen", 0,0.0f);
             doorOpen = true;
+           
         }
         else {
             doorAnim.Play("DoorClose", 0, 0.0f);

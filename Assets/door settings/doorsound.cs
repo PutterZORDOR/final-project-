@@ -7,14 +7,14 @@ public class doorsound : MonoBehaviour
     private bool doorOpen = false;
     
     [Header("Animation Names")]
-    [SerializeField] private string openAnimationName = "doorsimple";
+    [SerializeField] private string openAnimationName = "DoorOpen";
     [SerializeField] private string closeAnimationName = "DoorClose";
 
     [Header("Pause Timer")]
     [SerializeField] private int waitTimer = 1;
     [SerializeField] private bool pauseInteraction = false;
 
-    [Header("Audio")]
+    [Header("Audio")]  
     [SerializeField] private AudioSource doorOpenAudioSource = null;
     [SerializeField] private float openDelay = 0;
     [Space(10)]
@@ -43,6 +43,6 @@ public class doorsound : MonoBehaviour
             StartCoroutine(PauseDoorInteraction());
             doorCloseAudioSource.PlayDelayed(closeDelay);
         }
-
+        
     }
 }
