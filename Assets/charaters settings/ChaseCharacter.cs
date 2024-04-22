@@ -15,34 +15,33 @@ public class ChaseCharacter : MonoBehaviour
     void Start() {
         initialPosition = transform.position;
     }
-    private void Update() {
+    private void Update() 
+        {
         // calculate the distance between the enemy and the player
         float distance = Vector3.Distance(player.position, transform.position);
 
         ChasePlayer(distance); // method that holds the logic for enemy to chase player
         PlayerDeath(distance); // method that reloads the level when enemy catches player
-        if (Input.GetKeyDown(KeyCode.W)) {
 
-            animator.SetBool("isWalking", true);
-        } else if (Input.GetKeyUp(KeyCode.W)) {
+        if (distance > chaseRange) 
+        {
+       
 
-            animator.SetBool("isWalking", false);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            if (Input.GetKeyDown(KeyCode.W)) {
 
-            animator.SetBool("isRunning", true);
-        } else if (Input.GetKeyUp(KeyCode.LeftShift)) {
+                animator.SetBool("isWalking", true);
+            } else if (Input.GetKeyUp(KeyCode.W)) {
 
-            animator.SetBool("isRunning", false);
-        }
+                animator.SetBool("isWalking", false);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift)) {
 
+                animator.SetBool("isRunning", true);
+            } else if (Input.GetKeyUp(KeyCode.LeftShift)) {
 
-        // หากระยะทางมากกว่าระยะที่กำหนดให้
-        if (distance > chaseRange) {
-            // ส่งศัตรูกลับไปยังจุดเริ่มต้น
-            distance = Vector3.Distance(transform.position, player.position);
+                animator.SetBool("isRunning", false);
+            }
             transform.position = initialPosition;
-
         }
     }
     private void PlayerDeath(float distance) {
@@ -50,7 +49,6 @@ public class ChaseCharacter : MonoBehaviour
         if (distance < deathRange) {
             // loads the active scene
             SceneManager.LoadSceneAsync("Death");
-            distance = Vector3.Distance(transform.position, player.position);
             transform.position = initialPosition;
             
         }

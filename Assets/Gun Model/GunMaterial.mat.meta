@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b32da67be951d1b4caf7c91b9bad56d5
+timeCreated: 1461590729
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61481
+  packageName: Hand Painted Shotgun
+  packageVersion: 1.0
+  assetPath: Assets/Gun Model/GunMaterial.mat
+  uploadId: 114696

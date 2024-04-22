@@ -14,7 +14,16 @@ using UnityEngine.SceneManagement;
             Application.Quit();
            
      }
-  
+    private void Update() {
+        if (Input.GetMouseButton(0)) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Escape)) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
 
 
 }

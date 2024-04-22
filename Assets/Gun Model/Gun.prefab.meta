@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 029c041c331bb0c4cb4b48887b6508da
+timeCreated: 1461607714
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 61481
+  packageName: Hand Painted Shotgun
+  packageVersion: 1.0
+  assetPath: Assets/Gun Model/Gun.prefab
+  uploadId: 114696

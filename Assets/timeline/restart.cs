@@ -5,14 +5,24 @@ using UnityEngine.SceneManagement;
     public class restart : MonoBehaviour
     {
     public void RestartGame() {
-     
+        if (Input.GetKeyDown(KeyCode.Space)) {
             SceneManager.LoadSceneAsync("terrain");
-        
+        }
     }
     public void MainMenuGame() {
-     
+        if (Input.GetKeyDown(KeyCode.Space)) {
             SceneManager.LoadSceneAsync("main menu and play");
-        
-   }
-   
+        }
+    }
+    private void Update() {
+        if (Input.GetMouseButton(0)) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Escape)) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
 }

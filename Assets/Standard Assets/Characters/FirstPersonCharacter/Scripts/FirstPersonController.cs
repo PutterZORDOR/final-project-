@@ -31,7 +31,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Camera m_Camera;
         private bool m_Jump;
-        private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
@@ -42,11 +41,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
-
-        private float walk_volum_min = 0.2f;
-        private float walk_volum_max = 0.6f;
-        private float walk_volum_distance = 0.4f;
 
         // Use this for initialization
 
@@ -72,19 +66,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump) {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) {
-                StartCoroutine(m_JumpBob.DoBobCycle());
-                PlayLandingSound();
-                m_MoveDir.y = 0f;
-                m_Jumping = false;
-            }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
-                m_MoveDir.y = 0f;
-            }
 
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
+                if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) {
+                    StartCoroutine(m_JumpBob.DoBobCycle());
+                    PlayLandingSound();
+                    m_MoveDir.y = 0f;
+                    m_Jumping = false;
+                }
+                if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
+                    m_MoveDir.y = 0f;
+                }
+
+                m_PreviouslyGrounded = m_CharacterController.isGrounded;
+            }
         }
 
 
@@ -195,11 +190,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             bool waswalking = m_IsWalking;
 
-#if !MOBILE_INPUT
+
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-#endif
+
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);

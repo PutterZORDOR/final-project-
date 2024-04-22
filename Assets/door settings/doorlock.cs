@@ -66,7 +66,7 @@ public class doorlock : MonoBehaviour
             buttonOpenDoor.SetActive(true);
         }
 
-        // เพิ่มตรวจสอบการกดปุ่ม "R" เพื่อเปิดหรือปิดประตู
+        // เพิ่มตรวจสอบการกดปุ่ม "E" เพื่อเปิดหรือปิดประตู
         if (isReach && Input.GetKeyDown(KeyCode.E)) {
             if (doorIsopen) {
                 CloseDoor();
