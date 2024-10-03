@@ -24152,7 +24152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c15ba713573ddf45b88764007cda4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: restart
 --- !u!1001 &750453343
 PrefabInstance:
   m_ObjectHideFlags: 0

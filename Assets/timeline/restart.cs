@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
     public class restart : MonoBehaviour
     {
     public void RestartGame() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetMouseButton(0)) {
             SceneManager.LoadSceneAsync("terrain");
         }
     }
     public void MainMenuGame() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetMouseButton(0)) {
             SceneManager.LoadSceneAsync("main menu and play");
         }
     }
